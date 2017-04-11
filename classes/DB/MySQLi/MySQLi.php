@@ -95,7 +95,7 @@ class MySQLi extends \DB\Database {
         return $row;
     }
     
-    public function getRowsNumber() {
+    public function getRowsNumber():int {
         
         if ($this->query_id) {
             return mysqli_num_rows($this->query_id);
@@ -106,7 +106,7 @@ class MySQLi extends \DB\Database {
     }
     
        
-    public function tableExists($db, $table) {
+    public function tableExists($db, $table):boolean {
         
         $this->query($this->connection_id, "SHOW TABLES FROM ".$db);
         $tbs = $this->preanalyze();
@@ -128,7 +128,7 @@ class MySQLi extends \DB\Database {
      * @param type $db
      * @return boolean
      */
-    public function dbExists($db) {
+    public function dbExists($db):boolean {
         
         $this->query($this->connection_id, "SHOW DATABASES");
         $dbs = $this->preanalyze();
@@ -193,7 +193,7 @@ class MySQLi extends \DB\Database {
        }
        
        
-       public function wasError($conn_id) {
+       public function wasError($conn_id):boolean {
            
            $errno = mysqli_errno($conn_id);
            if ($errno > 0) {
@@ -204,12 +204,12 @@ class MySQLi extends \DB\Database {
            }
        }
        
-       public function getError($conn_id) {
+       public function getError($conn_id):string {
            
            return mysqli_error($conn_id);
        }
        
-       public function getLastID($conn_id) {
+       public function getLastID($conn_id):int {
            return mysqli_insert_id($conn_id);
        }
      

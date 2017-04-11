@@ -104,7 +104,7 @@ final class MySQLi_Table extends \DB\MySQLi\MySQLi {
                 
     }
     
-    protected final function fieldExists(int $field_id):bool {
+    protected final function fieldExists(int $field_id):boolean {
         $field_count = $this->getFieldCount();
         if ($field_id > $field_count) {
             return false;
@@ -114,7 +114,12 @@ final class MySQLi_Table extends \DB\MySQLi\MySQLi {
         }
     }
     
-    public function getFieldName(int $field_id) {
+    /**
+     * Возвращает имя поля
+     * @param int $field_id
+     * @return string
+     */
+    public function getFieldName(int $field_id):string {
         if (!$this->fieldExists($field_id)) {
             return false;
         }
@@ -125,7 +130,7 @@ final class MySQLi_Table extends \DB\MySQLi\MySQLi {
         }
     }
     
-    public function getFieldTable(int $field_id) {
+    public function getFieldTable(int $field_id):string {
          if (!$this->fieldExists($field_id)) {
             return false;
         }
