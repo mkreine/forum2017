@@ -105,6 +105,16 @@ class MySQLi extends \DB\Database {
         }
     }
     
+    public function getAll() {
+        
+        $array = array();
+        while ($row = $this->query_id->fetch_row()) {
+            $array[] = $row;
+        }
+        
+        return $array;
+    }
+    
        
     public function tableExists($db, $table):boolean {
         
@@ -128,7 +138,7 @@ class MySQLi extends \DB\Database {
      * @param type $db
      * @return boolean
      */
-    public function dbExists($db):boolean {
+    public function dbExists($db) {
         
         $this->query($this->connection_id, "SHOW DATABASES");
         $dbs = $this->preanalyze();

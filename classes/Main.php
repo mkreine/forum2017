@@ -23,11 +23,17 @@ class Main {
      * Требуемая версия PHP для функционирования форума
      * @var string
      */
-    protected $required_php_version;
+    protected $required_php_version = '7.0.0';
     
     /**
      * Требуемая версия MySQL для функционирования форума
      * @var string
      */
-    protected $required_mysql_version;
+    protected $required_mysql_version = '5.5.54';
+    
+    public function __construct() {
+        
+        $this->forum_version    =   '0.1';
+        
+    }
 }
